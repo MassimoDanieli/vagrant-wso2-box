@@ -25,11 +25,11 @@ class esb{
     mode   => 755,
     source => '/vagrant/provision/esb/puppet/modules/esb/files/wso2esb',
   }->
-  file { '/opt/wso2esb-4.8.1/repository/components/lib/postgresql-9.4-1201.jdbc41.jar':
+  file { '/opt/wso2esb-4.8.1/repository/components/lib/mysql-connector-java-5.1.36.jar':
     owner  => root,
     group  => root,
     mode   => 755,
-    source => '/home/vagrant/postgresql-9.4-1201.jdbc41.jar',
+    source => '/home/vagrant/mysql-connector-java-5.1.36.jar',
   }->
   service { 'wso2esb':
     ensure => true,
