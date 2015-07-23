@@ -12,6 +12,15 @@ else
    wget https://jdbc.postgresql.org/download/postgresql-9.4-1201.jdbc41.jar
 fi
 
+# Mysql Driver
+FILE=/mysql-connector-java-5.1.35.zip
+if [ -f $FILE ];
+then
+echo "Mysql jdbc driver already downloaded"
+else
+  wget http://mirrors.dotsrc.org/mysql/Downloads/Connector-J/mysql-connector-java-5.1.35.zip 
+fi
+
 # ESB
 FILE=wso2esb-4.8.1.zip
 
@@ -62,15 +71,15 @@ fi
 #   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/business-rules-server/2.1.0/wso2brs-2.1.0.zip
 #fi
 
-## DSS
-#FILE=wso2dss-3.2.2.zip
-#
-#if [ -f $FILE ];
-#then
-#   echo "DSS already downloaded"
-#else
-#   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/data-services-server/3.2.2/wso2dss-3.2.2.zip
-#fi
+# DSS
+FILE=wso2dss-3.2.2.zip
+
+if [ -f $FILE ];
+then
+   echo "DSS already downloaded"
+else
+   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/data-services-server/3.2.2/wso2dss-3.2.2.zip
+fi
 
 ## CEP
 #FILE=wso2cep-3.1.0.zip
