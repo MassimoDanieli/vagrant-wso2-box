@@ -10,39 +10,39 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu/trusty32"
+  config.vm.box = "chef/centos-7.0"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
+  # config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
 
   #
-  # WSO2 ESB
+  # WSO2 DEV
   #
 
-  config.vm.define "wso2esb" do |wso2esb|
+  config.vm.define "wso2dev" do |wso2dev|
     #ESB
-    wso2esb.vm.network "forwarded_port", guest: 9443, host: 9443
-    wso2esb.vm.network "forwarded_port", guest: 9763, host: 9763
-    wso2esb.vm.network "forwarded_port", guest: 8280, host: 8280
-    wso2esb.vm.network "forwarded_port", guest: 8243, host: 8243
+    wso2dev.vm.network "forwarded_port", guest: 9443, host: 9443
+    wso2dev.vm.network "forwarded_port", guest: 9763, host: 9763
+    wso2dev.vm.network "forwarded_port", guest: 8280, host: 8280
+    wso2dev.vm.network "forwarded_port", guest: 8243, host: 8243
     #AM
-    wso2esb.vm.network "forwarded_port", guest: 9445, host: 9445
-    wso2esb.vm.network "forwarded_port", guest: 9765, host: 9765
-    wso2esb.vm.network "forwarded_port", guest: 8282, host: 8282
-    wso2esb.vm.network "forwarded_port", guest: 8245, host: 8245
+    wso2dev.vm.network "forwarded_port", guest: 9445, host: 9445
+    wso2dev.vm.network "forwarded_port", guest: 9765, host: 9765
+    wso2dev.vm.network "forwarded_port", guest: 8282, host: 8282
+    wso2dev.vm.network "forwarded_port", guest: 8245, host: 8245
     #BAM
-    wso2esb.vm.network "forwarded_port", guest: 9444, host: 9444
-    wso2esb.vm.network "forwarded_port", guest: 9764, host: 9764
-    wso2esb.vm.network "forwarded_port", guest: 7614, host: 7614
+    wso2dev.vm.network "forwarded_port", guest: 9444, host: 9444
+    wso2dev.vm.network "forwarded_port", guest: 9764, host: 9764
+    wso2dev.vm.network "forwarded_port", guest: 7614, host: 7614
     #GREG
-    wso2esb.vm.network "forwarded_port", guest: 9446, host: 9446
+    wso2dev.vm.network "forwarded_port", guest: 9446, host: 9446
 
-    wso2esb.vm.network :private_network, ip: "192.168.11.11"
-    wso2esb.vm.hostname = "wso2esb.local"
+    wso2dev.vm.network :private_network, ip: "192.168.11.11"
+    wso2dev.vm.hostname = "wso2dev.local"
 
-    wso2esb.vm.provider "virtualbox" do |vb|
-      vb.name = 'wso2esb-box'
+    wso2dev.vm.provider "virtualbox" do |vb|
+      vb.name = 'wso2dev-box'
       vb.customize ["modifyvm", :id, "--memory", "4096"]
       vb.customize ["modifyvm", :id, "--cpus", "2"]
       vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
@@ -51,14 +51,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.customize ["modifyvm", :id, "--acpi", "on"]
       vb.customize ["modifyvm", :id, "--ioapic", "on"]
 
-      # wso2esb.vm.synced_folder "./repository/esb/deployment/server", "/opt/wso2esb-4.8.1/repository/deployment/server", user:"vagrant", group:"vagrant"
-      # wso2esb.vm.synced_folder "./repository/esb/conf", "/opt/wso2esb-4.8.1/repository/conf", user:"vagrant", group:"vagrant"
+      # wso2dev.vm.synced_folder "./repository/esb/deployment/server", "/opt/wso2dev-4.8.1/repository/deployment/server", user:"vagrant", group:"vagrant"
+      # wso2dev.vm.synced_folder "./repository/esb/conf", "/opt/wso2dev-4.8.1/repository/conf", user:"vagrant", group:"vagrant"
 
-      wso2esb.vm.provision :shell, :path => "provision/esb/shell/install_init.sh"
-      wso2esb.vm.provision :shell, :path => "provision/esb/shell/download.sh"
-      #wso2esb.vm.provision :shell, :path => "provision/shell/build.sh"
+      wso2dev.vm.provision :shell, :path => "provision/esb/shell/install_init.sh"
+      wso2dev.vm.provision :shell, :path => "provision/esb/shell/download.sh"
+      #wso2dev.vm.provision :shell, :path => "provision/shell/build.sh"
 
-      wso2esb.vm.provision "puppet" do |puppet|
+      wso2dev.vm.provision "puppet" do |puppet|
         puppet.manifests_path = "provision/esb/puppet/manifests"
         puppet.manifest_file  = "site.pp"
         puppet.module_path = "provision/esb/puppet/modules"
