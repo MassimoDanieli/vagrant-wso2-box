@@ -7,6 +7,6 @@ fi
 
 # User specific aliases and functions
 #export JAVA_HOME=/usr/java/default
-export JAVA_HOME="/usr/java/jdk1.7.0_72"
+export JAVA_HOME="/etc/alternatives/java_sdk_1.7.0"
 export PATH=${JAVA_HOME}/bin:${PATH}
 export MAVEN_OPTS="-Xms1024m -Xmx1024m -XX:MaxPermSize=1024m"
