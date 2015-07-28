@@ -13,7 +13,7 @@ else
 fi
 
 # Mysql Driver
-FILE=/mysql-connector-java-5.1.35.zip
+FILE=/mysql-connector-java-5.1.36.jar
 if [ -f $FILE ];
 then
 echo "Mysql jdbc driver already downloaded"
