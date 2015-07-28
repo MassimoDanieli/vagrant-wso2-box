@@ -18,19 +18,19 @@ class esb{
     group   => 'vagrant',
     require => File['/tmp/wso2esb-4.8.1.zip', '/opt/wso2esb-4.8.1'],
     timeout => 0,
-  }->
+  }
   file { '/etc/init.d/wso2esb':
     owner  => root,
     group  => root,
     mode   => 755,
     source => '/vagrant/provision/esb/puppet/modules/esb/files/wso2esb',
-  }->
+  }
   file { '/opt/wso2esb-4.8.1/repository/components/lib/mysql-connector-java-5.1.36.jar':
     owner  => root,
     group  => root,
     mode   => 755,
     source => '/home/vagrant/mysql-connector-java-5.1.36.jar',
-  }->
+  }
   service { 'wso2esb':
     ensure => true,
     enable => true
