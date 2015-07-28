@@ -9,6 +9,7 @@ It downloads:
 - ActiveMQ
 - All WSO2 Products, comment out those you don't need
 - Postgresql Driver
+- MySQL Driver
 
 ##Active Application Services
 
@@ -76,3 +77,4 @@ Then click the 'Find Features' button.
 ###Add Data Source
 
 - Add remote Postgresql database to DSS
+- Add remote MySQL database to DSS
