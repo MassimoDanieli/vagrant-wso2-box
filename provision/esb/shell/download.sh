@@ -27,14 +27,14 @@ else
 fi
 
 # AM
-#FILE=wso2am-1.8.0.zip
+FILE=wso2am-1.8.0.zip
 
-#if [ -f $FILE ];
-#then
-#   echo "AM already downloaded"
-#else
-#   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/api-manager/1.8.0/wso2am-1.8.0.zip
-#fi
+if [ -f $FILE ];
+then
+   echo "AM already downloaded"
+else
+   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/api-manager/1.8.0/wso2am-1.8.0.zip
+fi
 
 # BAM
 #FILE=wso2bam-2.4.1.zip
