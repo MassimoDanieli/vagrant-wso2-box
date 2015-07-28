@@ -18,15 +18,15 @@ class am{
     group   => 'vagrant',
     require => File['/tmp/wso2am-1.8.0.zip', '/opt/wso2am-1.8.0'],
     timeout => 0,
-  }->
+  }
   file { '/etc/init.d/wso2am':
     owner  => root,
     group  => root,
     mode   => 755,
     source => '/vagrant/provision/esb/puppet/modules/am/files/wso2am',
-  }->
+  }
   service { 'wso2am':
-    ensure => true,
+    ensure => "running", 
     enable => true,
   }
 
