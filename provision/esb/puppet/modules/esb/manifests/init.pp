@@ -42,7 +42,7 @@ file { [ "/opt/wso2esb-4.8.1/repository", "/opt/wso2esb-4.8.1/repository/compone
   }
 
   service { 'wso2esb':
-    ensure => "running",
+    ensure => true,
     enable => true
   }
 }

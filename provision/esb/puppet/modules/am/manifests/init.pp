@@ -26,7 +26,7 @@ class am{
     source => '/vagrant/provision/esb/puppet/modules/am/files/wso2am',
   }
   service { 'wso2am':
-    ensure => "running", 
+    ensure => true, 
     enable => true,
   }
 
