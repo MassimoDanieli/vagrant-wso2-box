@@ -18,7 +18,7 @@ if [ -f $FILE ];
 then
 echo "Mysql jdbc driver already downloaded"
 else
-  wget http://mirrors.dotsrc.org/mysql/Downloads/Connector-J/mysql-connector-java-5.1.35.zip 
+  wget http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar
 fi
 
 # ESB
