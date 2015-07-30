@@ -72,7 +72,7 @@ end
       wso2dev.vm.provision "puppet" do |puppet|
         puppet.manifests_path = "provision/esb/puppet/manifests"
         puppet.manifest_file  = "site.pp"
-        puppet.module_path = "provision/esb/puppet/modules"
+      #  puppet.module_path = "provision/esb/puppet/modules"
       end
     end
 
