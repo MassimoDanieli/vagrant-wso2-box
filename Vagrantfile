@@ -31,29 +31,29 @@ end
   # WSO2 DEV
   #
 
-  config.vm.define "wso2dev" do |wso2dev|
+  config.vm.define "wso2deck" do |wso2deck|
     #ESB
-    wso2dev.vm.network "forwarded_port", guest: 9443, host: 9443
-    wso2dev.vm.network "forwarded_port", guest: 9763, host: 9763
-    wso2dev.vm.network "forwarded_port", guest: 8280, host: 8280
-    wso2dev.vm.network "forwarded_port", guest: 8243, host: 8243
+    wso2deck.vm.network "forwarded_port", guest: 9443, host: 9443
+    wso2deck.vm.network "forwarded_port", guest: 9763, host: 9763
+    wso2deck.vm.network "forwarded_port", guest: 8280, host: 8280
+    wso2deck.vm.network "forwarded_port", guest: 8243, host: 8243
     #AM
-    wso2dev.vm.network "forwarded_port", guest: 9445, host: 9445
-    wso2dev.vm.network "forwarded_port", guest: 9765, host: 9765
-    wso2dev.vm.network "forwarded_port", guest: 8282, host: 8282
-    wso2dev.vm.network "forwarded_port", guest: 8245, host: 8245
+    wso2deck.vm.network "forwarded_port", guest: 9445, host: 9445
+    wso2deck.vm.network "forwarded_port", guest: 9765, host: 9765
+    wso2deck.vm.network "forwarded_port", guest: 8282, host: 8282
+    wso2deck.vm.network "forwarded_port", guest: 8245, host: 8245
     #BAM
-    wso2dev.vm.network "forwarded_port", guest: 9444, host: 9444
-    wso2dev.vm.network "forwarded_port", guest: 9764, host: 9764
-    wso2dev.vm.network "forwarded_port", guest: 7614, host: 7614
+    wso2deck.vm.network "forwarded_port", guest: 9444, host: 9444
+    wso2deck.vm.network "forwarded_port", guest: 9764, host: 9764
+    wso2deck.vm.network "forwarded_port", guest: 7614, host: 7614
     #GREG
-    wso2dev.vm.network "forwarded_port", guest: 9446, host: 9446
+    wso2deck.vm.network "forwarded_port", guest: 9446, host: 9446
 
-    wso2dev.vm.network :private_network, ip: "192.168.11.11"
-    wso2dev.vm.hostname = "wso2dev.local"
+    wso2deck.vm.network :private_network, ip: "192.168.11.11"
+    wso2deck.vm.hostname = "wso2deck.local"
 
-    wso2dev.vm.provider "virtualbox" do |vb|
-      vb.name = 'wso2dev-box'
+    wso2deck.vm.provider "virtualbox" do |vb|
+      vb.name = 'wso2deck-box'
       vb.customize ["modifyvm", :id, "--memory", "4096"]
       vb.customize ["modifyvm", :id, "--cpus", "2"]
       vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
@@ -62,14 +62,14 @@ end
       vb.customize ["modifyvm", :id, "--acpi", "on"]
       vb.customize ["modifyvm", :id, "--ioapic", "on"]
 
-      # wso2dev.vm.synced_folder "./repository/esb/deployment/server", "/opt/wso2dev-4.8.1/repository/deployment/server", user:"vagrant", group:"vagrant"
-      # wso2dev.vm.synced_folder "./repository/esb/conf", "/opt/wso2dev-4.8.1/repository/conf", user:"vagrant", group:"vagrant"
+      # wso2deck.vm.synced_folder "./repository/esb/deployment/server", "/opt/wso2deck-4.8.1/repository/deployment/server", user:"vagrant", group:"vagrant"
+      # wso2deck.vm.synced_folder "./repository/esb/conf", "/opt/wso2deck-4.8.1/repository/conf", user:"vagrant", group:"vagrant"
 
-      wso2dev.vm.provision :shell, :path => "provision/esb/shell/install_init.sh"
-      wso2dev.vm.provision :shell, :path => "provision/esb/shell/docker.sh"
-      #wso2dev.vm.provision :shell, :path => "provision/shell/build.sh"
+      wso2deck.vm.provision :shell, :path => "provision/esb/shell/install_init.sh"
+      wso2deck.vm.provision :shell, :path => "provision/esb/shell/docker.sh"
+      #wso2deck.vm.provision :shell, :path => "provision/shell/build.sh"
 
-      wso2dev.vm.provision "puppet" do |puppet|
+      wso2deck.vm.provision "puppet" do |puppet|
         puppet.manifests_path = "provision/esb/puppet/manifests"
         puppet.manifest_file  = "site.pp"
       #  puppet.module_path = "provision/esb/puppet/modules"
