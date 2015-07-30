@@ -66,7 +66,7 @@ end
       # wso2dev.vm.synced_folder "./repository/esb/conf", "/opt/wso2dev-4.8.1/repository/conf", user:"vagrant", group:"vagrant"
 
       wso2dev.vm.provision :shell, :path => "provision/esb/shell/install_init.sh"
-      wso2dev.vm.provision :shell, :path => "provision/esb/shell/download.sh"
+      wso2dev.vm.provision :shell, :path => "provision/esb/shell/docker.sh"
       #wso2dev.vm.provision :shell, :path => "provision/shell/build.sh"
 
       wso2dev.vm.provision "puppet" do |puppet|
