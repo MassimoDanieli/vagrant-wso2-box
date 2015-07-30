@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo yum update -y
+
 curl -sSL https://get.docker.com/ | sh
 sudo service docker start
 docker run --rm --name test-dev-am -p 9445:9443 massimodanieli/wso2apim
