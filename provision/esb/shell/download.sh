@@ -17,44 +17,44 @@ FILE=mysql-connector-java-5.1.36.jar
   wget http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar && echo "ANUBIIII"
 
 # ESB
-FILE=wso2esb-4.8.1.zip
+FILE=wso2esb-4.9.0.zip
 
 if [ -f $FILE ];
 then
    echo "ESB already downloaded"
 else
-   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://dist.wso2.org/products/enterprise-service-bus/4.8.1/wso2esb-4.8.1.zip
+   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://dist.wso2.org/products/enterprise-service-bus/4.9.0/wso2esb-4.9.0.zip
 fi
 
 # AM
-FILE=wso2am-1.8.0.zip
+FILE=wso2am-1.9.1.zip
 
 if [ -f $FILE ];
 then
    echo "AM already downloaded"
 else
-   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/api-manager/1.8.0/wso2am-1.8.0.zip
+   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/api-manager/1.9.1/wso2am-1.9.1.zip
 fi
 
-# BAM
-#FILE=wso2bam-2.4.1.zip
+# AS
+FILE=wso2as-5.2.1.zip
 
-#if [ -f $FILE ];
-#then
-#   echo "BAM already downloaded"
-#else
-#   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/business-activity-monitor/2.4.1/wso2bam-2.4.1.zip
-#fi
+if [ -f $FILE ];
+then
+   echo "AS already downloaded"
+else
+   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/application-server/5.2.1/wso2as-5.2.1.zip
+fi
 
-# GR
-#FILE=wso2greg-4.6.0.zip
+ # GR
+FILE=wso2greg-5.0.0.zip
 
-#if [ -f $FILE ];
-#then
-#   echo "GR already downloaded"
-#else
-#   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/governance-registry/4.6.0/wso2greg-4.6.0.zip
-#fi
+if [ -f $FILE ];
+then
+   echo "GR already downloaded"
+else
+   wget --user-agent="testuser" --referer="http://connect.wso2.com/wso2/getform/reg/new_product_download" http://product-dist.wso2.com/products/governance-registry/5.0.0/wso2greg-5.0.0.zip
+fi
 
 ## BRS
 #FILE=wso2brs-2.1.0.zip
