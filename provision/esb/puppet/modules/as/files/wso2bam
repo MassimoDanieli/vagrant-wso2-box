@@ -1,10 +1,10 @@
 #! /bin/sh
 # chkconfig: 2345 20 80
-# description: SysVInit script for WSO2 API Manager
+# description: SysVInit script for WSO2 Business Manager
 
-export JAVA_HOME="/etc/alternatives/java_sdk_1.7.0_openjdk"
-export SERVICE_HOME='/opt/wso2am-1.9.1'
-export SERVICE_NAME='WSO2 API Manager'
+export JAVA_HOME=/usr/java/default
+export SERVICE_HOME='/opt/wso2bam-2.4.1'
+export SERVICE_NAME='WSO2 Business Manager'
 export USER=vagrant
 
 startcmd="$SERVICE_HOME/bin/wso2server.sh start > /dev/null &"
@@ -24,7 +24,7 @@ stop)
    echo "Stopping $SERVICE_NAME ..."
    su -c "${stopcmd}" $USER
 ;;
-status)
+status)`
    kill -n 0 `cat $SERVICE_HOME/wso2carbon.pid` > /dev/null 2>&1 && exit 0
 ;;
 *)
