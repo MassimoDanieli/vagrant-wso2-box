@@ -1,9 +1,9 @@
 class esb{
-  file { '/tmp/wso2esb-4.8.1.zip':
-    source => '/home/vagrant/wso2esb-4.8.1.zip',
+  file { '/tmp/wso2esb-4.9.0.zip':
+    source => '/home/vagrant/wso2esb-4.9.9.zip',
   }
 
-  file { '/opt/wso2esb-4.8.1':
+  file { '/opt/wso2esb-4.9.0':
     ensure => directory,
     owner  => 'vagrant',
     group  => 'vagrant',
@@ -11,12 +11,12 @@ class esb{
   }
 
   exec { 'Extract WSO2 Data Services Server':
-    command => '/usr/bin/unzip /tmp/wso2esb-4.8.1.zip',
+    command => '/usr/bin/unzip /tmp/wso2esb-4.9.0.zip',
     cwd     => '/opt',
-    creates => '/opt/wso2esb-4.8.1/bin/wso2server.sh',
+    creates => '/opt/wso2esb-4.9.0/bin/wso2server.sh',
     user    => 'vagrant',
     group   => 'vagrant',
-    require => File['/tmp/wso2esb-4.8.1.zip', '/opt/wso2esb-4.8.1'],
+    require => File['/tmp/wso2esb-4.9.0.zip', '/opt/wso2esb-4.9.0'],
     timeout => 0,
   }
 
@@ -27,14 +27,14 @@ class esb{
     source => '/vagrant/provision/esb/puppet/modules/esb/files/wso2esb',
   }
 
-file { [ "/opt/wso2esb-4.8.1/repository", "/opt/wso2esb-4.8.1/repository/components", "/opt/wso2esb-4.8.1/repository/components/lib" ]:
+file { [ "/opt/wso2esb-4.9.0/repository", "/opt/wso2esb-4.9.0/repository/components", "/opt/wso2esb-4.9.0/repository/components/lib" ]:
    ensure => directory,
    owner    => 'vagrant',
    group   => 'vagrant',
-   before => File ['/opt/wso2esb-4.8.1/repository/components/lib/mysql-connector-java-5.1.36.jar'],
+   before => File ['/opt/wso2esb-4.9.0/repository/components/lib/mysql-connector-java-5.1.36.jar'],
 }
 
-  file { '/opt/wso2esb-4.8.1/repository/components/lib/mysql-connector-java-5.1.36.jar':
+  file { '/opt/wso2esb-4.9.0/repository/components/lib/mysql-connector-java-5.1.36.jar':
     owner  => root,
     group  => root,
     mode   => 755,
